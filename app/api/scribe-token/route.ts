@@ -56,7 +56,7 @@ export async function GET(request: NextRequest) {
         const response = await fetch(
             "https://api.elevenlabs.io/v1/single-use-token/realtime_scribe",
             {
-                method: "GET",
+                method: "POST",
                 headers: {
                     "xi-api-key": apiKey,
                 },
