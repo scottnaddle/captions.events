@@ -1,5 +1,3 @@
-import { notFound } from "next/navigation"
-import { getSupabaseServerClient } from "@/lib/supabase/server"
 import { ViewerInterface } from "@/components/viewer-interface"
 import { Captions } from "lucide-react"
 
@@ -11,14 +9,6 @@ interface ViewPageProps {
 
 export default async function ViewPage({ params }: ViewPageProps) {
   const { uid } = await params
-  const supabase = await getSupabaseServerClient()
-
-  // Fetch the event (no auth required for viewing)
-  const { data: event, error } = await supabase.from("events").select("*").eq("uid", uid).single()
-
-  if (error || !event) {
-    notFound()
-  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
@@ -34,7 +24,7 @@ export default async function ViewPage({ params }: ViewPageProps) {
 
       {/* Main Content */}
       <main className="container mx-auto px-4 py-8">
-        <ViewerInterface event={event} />
+        <ViewerInterface eventUid={uid} />
       </main>
     </div>
   )

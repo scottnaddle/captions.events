@@ -8,7 +8,10 @@ Real-time captioning platform with on-device translation. Built with ElevenLabs 
 
 - Real-time speech-to-text transcription (100-200ms latency)
 - Live caption broadcasting to unlimited viewers
-- On-device translation with [Chrome built-in AI](https://developer.chrome.com/docs/ai/translator-api) (Chrome 138+)
+- **Multiple translation services**: Chrome AI Translator and Google Gemini API
+- **Side-by-side view**: Display original content and translations simultaneously
+- **Auto-scrolling**: Automatically scrolls to show latest captions
+- Support for 50+ languages including Korean and English
 - Automatic language detection
 - GitHub OAuth authentication
 - Caption history and event management
@@ -20,6 +23,7 @@ Real-time captioning platform with on-device translation. Built with ElevenLabs 
 - Supabase account
 - ElevenLabs API key
 - GitHub account (for OAuth)
+- **Optional**: Google Gemini API key for extended translation support
 
 ## Quick Setup
 
@@ -52,6 +56,8 @@ NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
 ELEVENLABS_API_KEY=your_api_key
+# Optional: For extended translation support with 50+ languages
+GEMINI_API_KEY=your_gemini_api_key
 ```
 
 5. **Run**
@@ -73,7 +79,9 @@ Visit [http://localhost:3000](http://localhost:3000)
 **Viewer:**
 
 1. Visit `/view/[uid]`
-2. Select language for on-device translation (Chrome 138+)
+2. Select translation service: Chrome AI (free, 15 languages) or Gemini (50+ languages)
+3. Choose display mode: "Translated Only" or "Side by Side" to see both original and translation
+4. Captions automatically scroll to show latest content
 
 ## Deployment
 
@@ -87,14 +95,17 @@ Deploy to Vercel:
 
 - [SCRIBE_SETUP.md](./SCRIBE_SETUP.md) - ElevenLabs configuration
 - [GITHUB_AUTH_SETUP.md](./GITHUB_AUTH_SETUP.md) - OAuth setup
-- [TRANSLATION_FEATURE.md](./TRANSLATION_FEATURE.md) - Translation details
+- [TRANSLATION_FEATURE.md](./TRANSLATION_FEATURE.md) - Original translation feature
+- [TRANSLATION_FEATURES.md](./TRANSLATION_FEATURES.md) - Enhanced translation capabilities
 
 ## Troubleshooting
 
 - **Token fails**: Check `ELEVENLABS_API_KEY` in `.env.local`
 - **No microphone**: Grant permissions, use HTTPS
 - **No captions**: Check Supabase connection and RLS policies
-- **Translation unavailable**: Use Chrome 138+
+- **Chrome translation unavailable**: Use Chrome 138+ with AI features enabled
+- **Gemini translation not working**: Check `GEMINI_API_KEY` in `.env.local`
+- **Translation errors**: Switch between translation services or retry later
 
 ---
 

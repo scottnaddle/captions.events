@@ -1,0 +1,4 @@
+[auth.external.github]
+enabled = true
+client_id = "Ov23li5t4p5wcWFjZUc1"
+secret = "74b40994cab18973b1fc5179f4cce25e81ce5909"
